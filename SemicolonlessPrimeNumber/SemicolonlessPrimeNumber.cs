@@ -12,7 +12,8 @@
                              new { value = n.ToString() + Environment.NewLine, IsPrime = false }
                              : new { value = n.ToString() + Environment.NewLine, IsPrime = true })
             .Where(x => x.IsPrime == true)
-            .Select(x => Console.OpenStandardOutput().WriteAsync(Text.Encoding.Default.GetBytes(x.value)))
+            .Select(x => Text.Encoding.Default.GetBytes(x.value))
+            .Select(x => Console.OpenStandardOutput().WriteAsync(x))
             .ToList() != null) { }
         }
     }
